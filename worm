@@ -270,8 +270,11 @@ On Telegram By My Account
 
 xdg-open $PREFIX/etc/Hacked/file.txt
 sleep 5
-xdg-open $PREFIX/etc/Hacked/Blue24Bluer.jpg
 
-termux-wallpaper -f $PREFIX/etc/Hacked/Hacker.jpg
+cd $PREFIX/etc/Hacked/
+
+git clone https://github.com/blue24bluer/Hacker-Profile &>> /dev/null 
+
+termux-wallpaper -f $PREFIX/etc/Hacked/Hacker-Profile/OIG.jpeg
 
 fi
